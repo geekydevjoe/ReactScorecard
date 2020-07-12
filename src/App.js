@@ -4,9 +4,6 @@ import AgentDropDown from './AgentDropDown';
 import MeasurementModal from './MeasurementModal';
 import jquery from 'jquery';
 import MeasurementList from './MeasurementList';
-import About from './About';
-import { BrowserRouter as Router,
-  Switch, Route, Link } from 'react-router-dom';
 
 class App extends Component {
 
@@ -108,72 +105,72 @@ class App extends Component {
   render(){
     return (
       <main>
-        <div className="container pt-1">
-          <div>
-              <div className="jumbotron row">
-                <h1>New Business Agent Scorecard</h1>
-              </div>
-              <div className="row">
-                <div className="col-sm-5 col-12">
-                  <AgentDropDown agents={this.state.agents} changed={this.agentChanged} />
+          <div className="container pt-1">
+            <div>
+                <div className="jumbotron row">
+                  <h1>New Business Agent Scorecard</h1>
                 </div>
-              </div>
-              <div className="row">&nbsp;</div>
-              <div className="row pt3" hidden={this.state.selected == null}>
-                <div className="col-sm-4 col-6 scoreBox">
-                  { this.state.selected != null && <div className="card">
-                    <div className="card-body">
-                      <h1 className="card-title">{this.state.selected.policyCount}</h1>
-                      <p className="card-text">
-                        This is the total number of polices written for the month.
-                      </p>
-                    </div>
-                  </div> }
-                </div>
-                <div className="col-sm-4 col-6 scoreBox">
-                  { this.state.selected != null && 
-                  <div className="card">
-                    <div className="card-body">
-                      <h1 className="card-title">{this.state.selected.score}</h1>
-                      <p className="card-text">
-                        This is your overall score based on the months new business.
-                      </p>
-                    </div>
+                <div className="row">
+                  <div className="col-sm-5 col-12">
+                    <AgentDropDown agents={this.state.agents} changed={this.agentChanged} />
                   </div>
-                }
                 </div>
-                <div className="col-sm-1"></div>
-              </div>
-              <div className="row">&nbsp;</div>
-              {/* Need a few columns */}
-              <div className="row" hidden={this.state.selected === null}>
-                <div className="col-sm-4 col-12 measurements">
+                <div className="row">&nbsp;</div>
+                <div className="row pt3" hidden={this.state.selected == null}>
+                  <div className="col-sm-4 col-6 scoreBox">
+                    { this.state.selected != null && <div className="card">
+                      <div className="card-body">
+                        <h1 className="card-title">{this.state.selected.policyCount}</h1>
+                        <p className="card-text">
+                          This is the total number of polices written for the month.
+                        </p>
+                      </div>
+                    </div> }
+                  </div>
+                  <div className="col-sm-4 col-6 scoreBox">
+                    { this.state.selected != null && 
+                    <div className="card">
+                      <div className="card-body">
+                        <h1 className="card-title">{this.state.selected.score}</h1>
+                        <p className="card-text">
+                          This is your overall score based on the months new business.
+                        </p>
+                      </div>
+                    </div>
+                  }
+                  </div>
+                  <div className="col-sm-1"></div>
+                </div>
+                <div className="row">&nbsp;</div>
+                {/* Need a few columns */}
+                <div className="row" hidden={this.state.selected === null}>
+                  <div className="col-sm-4 col-12 measurements">
+                    <MeasurementList 
+                      items={this.state.auto} 
+                      title="Auto" 
+                      measurementClicked={this.showMeasurement} 
+                      modalId={this.state.measurementModalId} />                  
+                  </div>
+                  <div className="col-sm-4 col-12 measurements">
+                    <MeasurementList 
+                      items={this.state.operators} 
+                      title="Operators" 
+                      measurementClicked={this.showMeasurement} 
+                      modalId={this.state.measurementModalId} />
+                  </div>
+                  <div className="col-sm-4 col-12 measurements">
                   <MeasurementList 
-                    items={this.state.auto} 
-                    title="Auto" 
-                    measurementClicked={this.showMeasurement} 
-                    modalId={this.state.measurementModalId} />                  
+                      items={this.state.operators} 
+                      title="Compliance" 
+                      measurementClicked={this.showMeasurement} 
+                      modalId={this.state.measurementModalId} />
+                  </div>
+          
+                  <MeasurementModal id={this.state.measurementModalId} measurement={this.state.measurement} />
                 </div>
-                <div className="col-sm-4 col-12 measurements">
-                  <MeasurementList 
-                    items={this.state.operators} 
-                    title="Operators" 
-                    measurementClicked={this.showMeasurement} 
-                    modalId={this.state.measurementModalId} />
-                </div>
-                <div className="col-sm-4 col-12 measurements">
-                <MeasurementList 
-                    items={this.state.operators} 
-                    title="Compliance" 
-                    measurementClicked={this.showMeasurement} 
-                    modalId={this.state.measurementModalId} />
-                </div>
-        
-                <MeasurementModal id={this.state.measurementModalId} measurement={this.state.measurement} />
+                
               </div>
-              
-            </div>
-        </div>
+          </div>
       </main>
     );
   }
