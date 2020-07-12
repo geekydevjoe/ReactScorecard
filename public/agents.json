@@ -1,0 +1,15 @@
+[
+    {
+        "name": "John Doe",
+        "number": "000001",
+        "lossRatio": 55.3,
+        "score": 9
+    },
+    {
+        "name": "Jane Doe",
+        "number": "000002",
+        "lossRatio": 52.6,
+        "score": 8
+    }
+
+]

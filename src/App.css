@@ -36,3 +36,43 @@
     transform: rotate(360deg);
   }
 }
+.measurementButton {
+  border: solid 0px;
+  color: blue;
+  margin: 10px;
+  background-color: transparent;
+  text-align: center;
+}
+.measurements h3{
+  text-align: center;
+}
+.measurements {
+  /* border: solid 1px black; */
+}
+.scoreBox{
+  color: blue;
+  
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+}
+.scoreBox h1{
+  font-size: 60pt;
+  
+}
+.ms1{
+  color: red;
+  background-color:pink;
+}
+.ms2{
+  color: lightslategray;
+  background-color: yellow;
+}
+.ms3{
+  color: blue;
+  background-color: lightsteelblue;
+}
+.ms4{
+  color: green;
+  background-color: powderblue;
+}

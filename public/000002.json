@@ -1,0 +1,62 @@
+[
+    {
+        "category": "Auto",
+        "title" : "Measurement 1",
+        "score" : 2
+    },
+    {
+        "category": "Auto",
+        "title" : "Measurement 2",
+        "score" : 3
+    },
+    {
+        "category": "Auto",
+        "title" : "Measurement 3",
+        "score" : 1
+    },
+    {
+        "category": "Auto",
+        "title" : "Measurement 4",
+        "score" : 4
+    },
+    {
+        "category": "Operators",
+        "title" : "Measurement 1",
+        "score" : 2
+    },
+    {
+        "category": "Operators",
+        "title" : "Measurement 2",
+        "score" : 1
+    },
+    {
+        "category": "Operators",
+        "title" : "Measurement 3",
+        "score" : 4
+    },
+    {
+        "category": "Operators",
+        "title" : "Measurement 4",
+        "score" : 3
+    },
+    {
+        "category": "Compliance",
+        "title" : "Measurement 1",
+        "score" : 4
+    },
+    {
+        "category": "Compliance",
+        "title" : "Measurement 2",
+        "score" : 3
+    },
+    {
+        "category": "Compliance",
+        "title" : "Measurement 3",
+        "score" : 2
+    },
+    {
+        "category": "Compliance",
+        "title" : "Measurement 4",
+        "score" : 1
+    }
+]
