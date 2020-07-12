@@ -46,19 +46,16 @@
 .measurements h3{
   text-align: center;
 }
-.measurements {
-  /* border: solid 1px black; */
-}
+/* .measurements {
+} */
 .scoreBox{
-  color: blue;
-  
+  color: navy;
   text-align: center;
   margin-left:auto;
   margin-right:auto;
 }
 .scoreBox h1{
-  font-size: 60pt;
-  
+  font-size: 50pt;
 }
 .ms1{
   color: red;
@@ -75,4 +72,8 @@
 .ms4{
   color: green;
   background-color: powderblue;
+}
+.card-text{
+  color: #606060;
+  text-align: left;
 }

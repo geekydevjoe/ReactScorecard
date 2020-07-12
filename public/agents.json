@@ -2,14 +2,13 @@
     {
         "name": "John Doe",
         "number": "000001",
-        "lossRatio": 55.3,
+        "policyCount": 28,
         "score": 9
     },
     {
         "name": "Jane Doe",
         "number": "000002",
-        "lossRatio": 52.6,
+        "policyCount": 52,
         "score": 8
     }
-
 ]

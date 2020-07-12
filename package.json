@@ -11,6 +11,7 @@
     "popper.js": "^1.16.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {
@@ -34,5 +35,6 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "./"
+  "homepage": ".",
+  "homepage2": "https://joeisanerd.github.io/scorecard"
 }

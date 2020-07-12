@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+//import logo from './logo.svg';
 import './App.css';
 import AgentDropDown from './AgentDropDown';
 import MeasurementModal from './MeasurementModal';
 import jquery from 'jquery';
-import MeasurementList from './MeasurementList';
-import About from './About';
 import { BrowserRouter as Router,
-  Switch, Route, Link } from 'react-router-dom';
+        Switch, Route, Link } from 'react-router-dom';
+import About from './About';
 
 class App extends Component {
 
@@ -108,72 +108,101 @@ class App extends Component {
   render(){
     return (
       <main>
-        <div className="container pt-1">
+        <Router>
+          <div className="container">
+            <div className="row">
+              <div className="col"><Link to="/">Home</Link></div>
+              <div className="col"></div>
+              <div className="col"></div>
+              <div className="col"></div>
+              <div className="col"></div>
+              <div className="col"><Link to="/About">About</Link></div>
+              
+            </div>
+          </div>
+
+          <Switch>
+            <Route exact path="/">
+            <div className="container pt-1">
           <div>
               <div className="jumbotron row">
-                <h1>New Business Agent Scorecard</h1>
+                <h1>New Business Scorecard</h1>
               </div>
               <div className="row">
-                <div className="col-sm-5 col-12">
+                
+                <div className="col-4">
                   <AgentDropDown agents={this.state.agents} changed={this.agentChanged} />
                 </div>
-              </div>
-              <div className="row">&nbsp;</div>
-              <div className="row pt3" hidden={this.state.selected == null}>
-                <div className="col-sm-4 col-6 scoreBox">
-                  { this.state.selected != null && <div className="card">
-                    <div className="card-body">
-                      <h1 className="card-title">{this.state.selected.policyCount}</h1>
-                      <p className="card-text">
-                        This is the total number of polices written for the month.
-                      </p>
-                    </div>
-                  </div> }
+                <div className="col-2"></div>
+
+                <div className="col-4">
+                  <select className="form-control">
+                    <option>January 2020</option>  
+                    <option>February 2020</option>  
+                    <option>March 2020</option>  
+                  </select> 
                 </div>
+              </div>
+
+              <div className="row pt3">
+                <div className="col-sm-1"></div>
                 <div className="col-sm-4 col-6 scoreBox">
-                  { this.state.selected != null && 
-                  <div className="card">
-                    <div className="card-body">
-                      <h1 className="card-title">{this.state.selected.score}</h1>
-                      <p className="card-text">
-                        This is your overall score based on the months new business.
-                      </p>
-                    </div>
-                  </div>
-                }
+                  { this.state.selected != null && <h1>{this.state.selected.lossRatio}</h1> }
+                </div>
+                <div className="col-sm-2"></div>
+                <div className="col-sm-4 col-6 scoreBox">
+                  { this.state.selected != null && <h1>{this.state.selected.score}</h1> }
                 </div>
                 <div className="col-sm-1"></div>
               </div>
-              <div className="row">&nbsp;</div>
+
               {/* Need a few columns */}
               <div className="row" hidden={this.state.selected === null}>
                 <div className="col-sm-4 col-12 measurements">
-                  <MeasurementList 
-                    items={this.state.auto} 
-                    title="Auto" 
-                    measurementClicked={this.showMeasurement} 
-                    modalId={this.state.measurementModalId} />                  
+                  <h3>Auto</h3>
+                {this.state.auto.map(item => (
+                  <button data-toggle="modal" className={ "measurementButton col-12 ms"+item.score } 
+                      data-target={ "#"+this.state.measurementModalId} 
+                        onClick={this.showMeasurement } 
+                        data-measurement={item.title}>{item.title}</button>
+                ))}
                 </div>
                 <div className="col-sm-4 col-12 measurements">
-                  <MeasurementList 
-                    items={this.state.operators} 
-                    title="Operators" 
-                    measurementClicked={this.showMeasurement} 
-                    modalId={this.state.measurementModalId} />
+                  <h3>Operators</h3>
+                {this.state.operators.map(item => (
+                  <button data-toggle="modal" className={ "measurementButton col-12 ms"+item.score } 
+                      data-target={ "#"+this.state.measurementModalId} 
+                        onClick={this.showMeasurement } 
+                        data-measurement={item.title}>{item.title}</button>
+                ))}
                 </div>
                 <div className="col-sm-4 col-12 measurements">
-                <MeasurementList 
-                    items={this.state.operators} 
-                    title="Compliance" 
-                    measurementClicked={this.showMeasurement} 
-                    modalId={this.state.measurementModalId} />
+                  <h3>Compliance</h3>
+                {this.state.compliance.map(item => (
+                  <button data-toggle="modal" className={ "measurementButton col-12 ms"+item.score } 
+                      data-target={ "#"+this.state.measurementModalId} 
+                        onClick={this.showMeasurement } 
+                        data-measurement={item.title}>{item.title}</button>
+                ))}
                 </div>
-        
+
+                
+                {/* <a href="#" onClick={e => this.showMeasurement('Joe test2')}>Click me!!!</a> */}
+                {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target={ "#"+this.state.measurementModalId}>
+                  Launch demo modal
+                </button> */}
                 <MeasurementModal id={this.state.measurementModalId} measurement={this.state.measurement} />
               </div>
               
             </div>
         </div>
+            </Route>
+            <Route exact path="/About">
+              <About />
+            </Route>
+          </Switch>
+
+        </Router>
       </main>
     );
   }
